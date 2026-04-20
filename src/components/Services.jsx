@@ -77,16 +77,16 @@ const Services = () => {
               {/* Left side - Content */}
               <div className="p-16 md:p-20 lg:p-24 flex flex-col justify-center">
                 <div className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">
-                  Get Results
+                  
                 </div>
                 <div className="text-8xl md:text-9xl lg:text-[10rem] font-bold text-black mb-4">
                   01
                 </div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4">
-                  Expertise
+                  Social strategy
                 </h2>
                 <h3 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
-                  Social strategy
+                  Social strategy die werkt.
                 </h3>
                 <p className="text-gray-600 leading-relaxed mb-4 text-xl">
                   Slimme strategie. Sterke start.
@@ -156,7 +156,7 @@ const Services = () => {
               {/* Left side - Content */}
               <div className="p-16 md:p-20 lg:p-24 flex flex-col justify-center text-white">
                 <div className="text-sm font-semibold text-white/80 uppercase tracking-wider mb-2">
-                  Get Results
+                  
                 </div>
                 <div className="text-8xl md:text-9xl lg:text-[10rem] font-bold mb-4">
                   02

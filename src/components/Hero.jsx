@@ -81,7 +81,7 @@ const Hero = () => {
               
               <div className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium">
                 <p className="bg-black/50 inline-block px-3 py-1 rounded-full backdrop-blur-sm">
-                  🎬 Brand Story
+                    
                 </p>
               </div>
             </div>
@@ -92,8 +92,8 @@ const Hero = () => {
             <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
               <div className="w-full h-full flex items-center justify-center text-white text-center p-6">
                 <div>
-                  <h3 className="text-3xl md:text-4xl font-bold mb-3">Creative</h3>
-                  <p className="text-base opacity-90">Strategy First</p>
+                  <h3 className="text-3xl md:text-4xl font-bold mb-3">10M+</h3>
+                  <p className="text-base opacity-90">Organistic views</p>
                   <div className="mt-6 w-12 h-0.5 bg-white/50 mx-auto"></div>
                   <p className="mt-4 text-sm">Innovative solutions for modern brands</p>
                 </div>
@@ -132,7 +132,7 @@ const Hero = () => {
               
               <div className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium">
                 <p className="bg-black/50 inline-block px-3 py-1 rounded-full backdrop-blur-sm">
-                  🎥 Product Showcase
+                    
                 </p>
               </div>
             </div>
@@ -143,7 +143,7 @@ const Hero = () => {
             <div className="bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
               <div className="w-full h-full flex items-center justify-center text-white text-center p-6">
                 <div>
-                  <h3 className="text-3xl md:text-4xl font-bold mb-3">Results</h3>
+                  <h3 className="text-3xl md:text-4xl font-bold mb-3">30M+</h3>
                   <p className="text-base opacity-90">Data Driven</p>
                   <div className="mt-6 w-12 h-0.5 bg-white/50 mx-auto"></div>
                   <p className="mt-4 text-sm">Measurable growth & ROI</p>

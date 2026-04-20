@@ -47,7 +47,7 @@ const Stats = () => {
           <div className="bg-white rounded-3xl overflow-hidden shadow-2xl">
             <div className="p-16 md:p-20 lg:p-24 flex flex-col justify-center">
               <div className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">
-                Get Results
+                
               </div>
                 <div className="text-8xl md:text-9xl lg:text-[10rem] font-bold text-black mb-4">
                   03
@@ -93,13 +93,13 @@ const Stats = () => {
               {/* Left side - Content */}
               <div className="p-16 md:p-20 lg:p-24 flex flex-col justify-center text-white">
                 <div className="text-sm font-semibold text-white/80 uppercase tracking-wider mb-2">
-                  Get Results
+                  
                 </div>
                 <div className="text-8xl md:text-9xl lg:text-[10rem] font-bold mb-4">
                   03
                 </div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                  Stats
+                  Data
                 </h2>
                 <h3 className="text-2xl md:text-3xl font-semibold mb-4">
                   Meetbare resultaten

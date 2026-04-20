@@ -59,6 +59,6 @@
 
 
 ## 🔮 Deployment & Live Demo
-- **Live Demo**: [View Get Hyped Demo](https://get-hyped-clone.netlify.app)
+- **Live Demo**: [https://get-hyped-design.vercel.app/](https://get-hyped-design.vercel.app/)
 
 

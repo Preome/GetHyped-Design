@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Stats from './components/Stats';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +9,6 @@ function App() {
     <div className="min-h-screen bg-[#F5F5F0]">
       <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <Hero />
-      <Stats />
     </div>
   );
 }

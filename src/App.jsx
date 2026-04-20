@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import Stats from './components/Stats';
+import Cases from './components/Cases';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,6 +13,8 @@ function App() {
       <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <Hero />
       <Services />
+      <Stats />
+      <Cases />
     </div>
   );
 }

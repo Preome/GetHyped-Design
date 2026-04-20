@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 
 const Services = () => {
   const videoRef = useRef(null);
+  const pinkVideoRef = useRef(null);
   const [isPinkVisible, setIsPinkVisible] = useState(false);
   const whiteCardRef = useRef(null);
 
@@ -9,6 +10,11 @@ const Services = () => {
     if (videoRef.current) {
       videoRef.current.play().catch(error => {
         console.log('Auto-play was prevented:', error);
+      });
+    }
+    if (pinkVideoRef.current) {
+      pinkVideoRef.current.play().catch(error => {
+        console.log('Pink video auto-play prevented:', error);
       });
     }
   }, []);
@@ -33,8 +39,19 @@ const Services = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleVideoPlay = () => {
+  const handleWhiteVideoPlay = () => {
     const video = videoRef.current;
+    if (video) {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+  };
+
+  const handlePinkVideoPlay = () => {
+    const video = pinkVideoRef.current;
     if (video) {
       if (video.paused) {
         video.play();
@@ -104,7 +121,7 @@ const Services = () => {
                     
                     <div className="absolute inset-0 bg-black/0 hover:bg-black/30 flex items-center justify-center transition-all duration-300 opacity-0 hover:opacity-100">
                       <button 
-                        onClick={handleVideoPlay}
+                        onClick={handleWhiteVideoPlay}
                         className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-all duration-300 hover:scale-110"
                       >
                         <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -139,7 +156,10 @@ const Services = () => {
               {/* Left side - Content */}
               <div className="p-16 md:p-20 lg:p-24 flex flex-col justify-center text-white">
                 <div className="text-sm font-semibold text-white/80 uppercase tracking-wider mb-2">
-                  Get Noticed
+                  Get Results
+                </div>
+                <div className="text-8xl md:text-9xl lg:text-[10rem] font-bold mb-4">
+                  02
                 </div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
                   Content creation
@@ -158,14 +178,34 @@ const Services = () => {
                 </button>
               </div>
               
-              {/* Right side - Illustration */}
-              <div className="p-16 md:p-20 lg:p-24 flex items-center justify-center">
-                <div className="relative">
-                  <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] bg-white/10 rounded-3xl transform rotate-6 hover:rotate-0 transition-all duration-500 flex items-center justify-center">
-                    <svg className="w-48 h-48 text-white/60" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-                      <circle cx="12" cy="12" r="3" fill="white" stroke="none"/>
-                    </svg>
+              {/* Right side - Tilted Video */}
+              <div className="relative p-16 md:p-20 lg:p-24 bg-gradient-to-br from-pink-400/20 to-rose-400/20 flex items-center justify-center">
+                <div className="transform rotate-3 transition-all duration-500 hover:rotate-0 w-full">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
+                    <video
+                      ref={pinkVideoRef}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    >
+                      <source src="/videos/video1.mp4" type="video/mp4" />
+                      <source src="/videos/video1.webm" type="video/webm" />
+                      Your browser does not support the video tag.
+                    </video>
+                    
+                    <div className="absolute inset-0 bg-black/0 hover:bg-black/30 flex items-center justify-center transition-all duration-300 opacity-0 hover:opacity-100">
+                      <button 
+                        onClick={handlePinkVideoPlay}
+                        className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-all duration-300 hover:scale-110"
+                      >
+                        <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <rect x="6" y="4" width="4" height="16" rx="1" />
+                          <rect x="14" y="4" width="4" height="16" rx="1" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

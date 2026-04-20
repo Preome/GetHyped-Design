@@ -50,7 +50,7 @@ const Services = () => {
       <div 
         ref={whiteCardRef}
         className={`min-h-screen flex items-center justify-center px-6 transition-all duration-700 ${
-          isPinkVisible ? 'scale-95 opacity-50' : 'scale-100 opacity-100'
+          isPinkVisible ? 'scale-95 opacity-30' : 'scale-100 opacity-100'
         }`}
       >
         <div className="max-w-7xl w-full mx-auto">
@@ -121,16 +121,18 @@ const Services = () => {
         </div>
       </div>
 
-      {/* Pink Card - Slides up and covers white card like a popup */}
+      {/* Pink Card - Slides up and covers white card with off-white background */}
       <div 
         className={`fixed inset-0 z-50 flex items-center justify-center px-6 transition-all duration-700 ease-out ${
           isPinkVisible 
             ? 'opacity-100 visible translate-y-0' 
             : 'opacity-0 invisible translate-y-full'
         }`}
-        style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}
       >
-        <div className="max-w-7xl w-full mx-auto transform transition-all duration-700 delay-100">
+        {/* Off-white background instead of black */}
+        <div className="absolute inset-0 bg-[#F5F5F0]"></div>
+        
+        <div className="relative max-w-7xl w-full mx-auto transform transition-all duration-700 delay-100">
           <div className="bg-gradient-to-br from-pink-500 to-rose-500 rounded-3xl overflow-hidden shadow-2xl">
             <div className="grid md:grid-cols-2 gap-0">
               

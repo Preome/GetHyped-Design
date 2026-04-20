@@ -1,16 +1,64 @@
-# React + Vite
+# Get Hyped 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![React](https://img.shields.io/badge/React-19.2.5-brightgreen)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8.0.9-blue)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.2.2-teal)](https://tailwindcss.com/)
 
-Currently, two official plugins are available:
+**Get Hyped** is a modern, fully responsive landing page clone for a dynamic marketing/digital agency website. Features eye-catching hero section, services showcase, impressive stats, case studies, and mission statement with smooth scroll animations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
+- Responsive design for all devices
+- Scroll reveal animations (custom hook)
+- Hero video/image backgrounds
+- Stats counters, service cards, case studies grid
+- Lucide icons for enhanced UI
+- Tailwind CSS v4 with custom theme (off-white, aspect ratios)
 
-## React Compiler
+## 🛠️ Tech Stack
+### Dependencies
+- **React** ^19.2.5
+- **React DOM** ^19.2.5
+- **Lucide React** ^1.8.0 (icons)
+- **@tailwindcss/postcss** ^4.2.2
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Dev Dependencies
+- **Vite** ^8.0.9 (build tool)
+- **Tailwind CSS** ^4.2.2
+- **PostCSS** ^8.5.10
+- **Autoprefixer** ^10.5.0
+- **ESLint** ^9.39.4 (with React hooks/refresh plugins)
+- **TypeScript types** for React
 
-## Expanding the ESLint configuration
+## 🚀 Quick Start
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Clone/Navigate**
+   ```
+   cd gethyped-clone
+   ```
+
+2. **Install dependencies**
+   ```
+   npm install
+   ```
+
+3. **Run dev server**
+   ```
+   npm run dev
+   ```
+   Open [http://localhost:5173](http://localhost:5173)
+
+4. **Build for production**
+   ```
+   npm run build
+   ```
+
+5. **Lint code**
+   ```
+   npm run lint
+   ```
+
+
+## 🔮 Deployment & Live Demo
+- **Live Demo**: [View Get Hyped Demo](https://get-hyped-clone.netlify.app)
+
+

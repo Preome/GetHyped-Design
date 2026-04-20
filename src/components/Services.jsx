@@ -4,7 +4,6 @@ const Services = () => {
   const videoRef = useRef(null);
   const [isPinkVisible, setIsPinkVisible] = useState(false);
   const whiteCardRef = useRef(null);
-  const pinkCardRef = useRef(null);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -14,30 +13,24 @@ const Services = () => {
     }
   }, []);
 
-  // Scroll effect to show pink card and hide white card
+  // Scroll effect - pink card slides up and covers white card
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsPinkVisible(true);
-          } else {
-            setIsPinkVisible(false);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    if (pinkCardRef.current) {
-      observer.observe(pinkCardRef.current);
-    }
-
-    return () => {
-      if (pinkCardRef.current) {
-        observer.unobserve(pinkCardRef.current);
+    const handleScroll = () => {
+      if (whiteCardRef.current) {
+        const rect = whiteCardRef.current.getBoundingClientRect();
+        // When white card is halfway up the screen, start showing pink card
+        if (rect.top < window.innerHeight * 0.3) {
+          setIsPinkVisible(true);
+        } else {
+          setIsPinkVisible(false);
+        }
       }
     };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleVideoPlay = () => {
@@ -52,27 +45,24 @@ const Services = () => {
   };
 
   return (
-    <section className="min-h-screen px-6 bg-[#F5F5F0] relative">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* White Card - Full screen */}
-        <div 
-          ref={whiteCardRef}
-          className={`min-h-screen transition-all duration-700 ease-out ${
-            isPinkVisible 
-              ? 'opacity-0 -translate-y-20 pointer-events-none' 
-              : 'opacity-100 translate-y-0'
-          }`}
-        >
-          <div className="bg-white rounded-3xl overflow-hidden shadow-2xl min-h-[80vh]">
-            <div className="grid md:grid-cols-2 gap-0 min-h-[80vh]">
+    <div className="bg-[#F5F5F0] relative min-h-screen">
+      {/* White Card - Takes full screen, extra large */}
+      <div 
+        ref={whiteCardRef}
+        className={`min-h-screen flex items-center justify-center px-6 transition-all duration-700 ${
+          isPinkVisible ? 'scale-95 opacity-50' : 'scale-100 opacity-100'
+        }`}
+      >
+        <div className="max-w-7xl w-full mx-auto">
+          <div className="bg-white rounded-3xl overflow-hidden shadow-2xl">
+            <div className="grid md:grid-cols-2 gap-0">
               
               {/* Left side - Content */}
               <div className="p-16 md:p-20 lg:p-24 flex flex-col justify-center">
                 <div className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">
                   Get Results
                 </div>
-                <div className="text-8xl md:text-9xl lg:text-[8rem] font-bold text-black mb-4">
+                <div className="text-8xl md:text-9xl lg:text-[10rem] font-bold text-black mb-4">
                   01
                 </div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4">
@@ -129,54 +119,51 @@ const Services = () => {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Pink Card - Popup that replaces white card on scroll */}
-        <div 
-          ref={pinkCardRef}
-          className="relative"
-        >
-          <div 
-            className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-700 ease-out ${
-              isPinkVisible 
-                ? 'opacity-100 visible pointer-events-auto' 
-                : 'opacity-0 invisible pointer-events-none'
-            }`}
-            style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
-          >
-            <div className="bg-gradient-to-br from-pink-500 to-rose-500 rounded-3xl overflow-hidden shadow-2xl max-w-7xl w-full mx-6 transform transition-all duration-700 ease-out">
-              <div className="grid md:grid-cols-2 gap-0">
-                
-                {/* Left side - Content */}
-                <div className="p-16 md:p-20 lg:p-24 flex flex-col justify-center text-white">
-                  <div className="text-sm font-semibold text-white/80 uppercase tracking-wider mb-2">
-                    Get Noticed
-                  </div>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                    Content creation
-                  </h2>
-                  <h3 className="text-2xl md:text-3xl font-semibold mb-4">
-                    Content die opvalt en raakt.
-                  </h3>
-                  <p className="text-white/90 leading-relaxed mb-8 text-lg">
-                    We maken content die opvalt. Blijft hangen. En jouw doelgroep raakt. Creatief, snel en energiek. Altijd met het doel voor ogen.
-                  </p>
-                  <button className="group inline-flex items-center gap-2 bg-white text-pink-600 font-semibold px-8 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 w-fit text-lg">
-                    Meer over content creatie
-                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </button>
+      {/* Pink Card - Slides up and covers white card like a popup */}
+      <div 
+        className={`fixed inset-0 z-50 flex items-center justify-center px-6 transition-all duration-700 ease-out ${
+          isPinkVisible 
+            ? 'opacity-100 visible translate-y-0' 
+            : 'opacity-0 invisible translate-y-full'
+        }`}
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}
+      >
+        <div className="max-w-7xl w-full mx-auto transform transition-all duration-700 delay-100">
+          <div className="bg-gradient-to-br from-pink-500 to-rose-500 rounded-3xl overflow-hidden shadow-2xl">
+            <div className="grid md:grid-cols-2 gap-0">
+              
+              {/* Left side - Content */}
+              <div className="p-16 md:p-20 lg:p-24 flex flex-col justify-center text-white">
+                <div className="text-sm font-semibold text-white/80 uppercase tracking-wider mb-2">
+                  Get Noticed
                 </div>
-                
-                {/* Right side - Illustration */}
-                <div className="p-16 md:p-20 lg:p-24 flex items-center justify-center">
-                  <div className="relative">
-                    <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] bg-white/10 rounded-3xl transform rotate-6 hover:rotate-0 transition-all duration-500 flex items-center justify-center">
-                      <svg className="w-48 h-48 text-white/60" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-                        <circle cx="12" cy="12" r="3" fill="white" stroke="none"/>
-                      </svg>
-                    </div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                  Content creation
+                </h2>
+                <h3 className="text-2xl md:text-3xl font-semibold mb-4">
+                  Content die opvalt en raakt.
+                </h3>
+                <p className="text-white/90 leading-relaxed mb-8 text-lg">
+                  We maken content die opvalt. Blijft hangen. En jouw doelgroep raakt. Creatief, snel en energiek. Altijd met het doel voor ogen.
+                </p>
+                <button className="group inline-flex items-center gap-2 bg-white text-pink-600 font-semibold px-8 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 w-fit text-lg">
+                  Meer over content creatie
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+              </div>
+              
+              {/* Right side - Illustration */}
+              <div className="p-16 md:p-20 lg:p-24 flex items-center justify-center">
+                <div className="relative">
+                  <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] bg-white/10 rounded-3xl transform rotate-6 hover:rotate-0 transition-all duration-500 flex items-center justify-center">
+                    <svg className="w-48 h-48 text-white/60" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                      <circle cx="12" cy="12" r="3" fill="white" stroke="none"/>
+                    </svg>
                   </div>
                 </div>
               </div>
@@ -184,7 +171,7 @@ const Services = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

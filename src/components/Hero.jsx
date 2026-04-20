@@ -48,11 +48,11 @@ const Hero = () => {
           </p>
         </div>
 
-        {/* Tilted Boxes Grid - LARGER SIZE */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+        {/* Tilted Boxes Grid - 2x2 on mobile, 4 cols on lg */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-24">
           {/* Box 1 - Video Box (Autoplay) */}
           <div className="transition-all duration-500 hover:scale-105" style={{ transform: 'rotate(2deg)' }}>
-            <div className="relative bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] group">
+            <div className="bg-black/10 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl aspect-square sm:aspect-[3/4] group relative">
               <video
                 ref={el => videoRefs.video1.current = el}
                 className="absolute inset-0 w-full h-full object-cover"
@@ -103,7 +103,7 @@ const Hero = () => {
 
           {/* Box 3 - Video Box (Autoplay) */}
           <div className="transition-all duration-500 hover:scale-105" style={{ transform: 'rotate(1deg)' }}>
-            <div className="relative bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] group">
+            <div className="bg-black/10 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl aspect-square sm:aspect-[3/4] group relative">
               <video
                 ref={el => videoRefs.video2.current = el}
                 className="absolute inset-0 w-full h-full object-cover"
